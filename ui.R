@@ -8,7 +8,7 @@ dashboardPage(title = "Headlines",
   
   dashboardSidebar(
   
-    
+    sliderInput("time",label="Minutes to Repeat",min=1,max=60, value=1),
     
     
     

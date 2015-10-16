@@ -1,13 +1,16 @@
 
 
-
+# autoInvalidate <- reactiveTimer({
+#   2000, session})
 
 output$guardianTable <- DT::renderDataTable({
   
   
 guardian_front <-read_html("http://www.theguardian.com/international")
 
-##autoInvalidate()
+milliseconds<-input$time*60000
+
+invalidateLater(milliseconds,session)
 print("new poll")
 
 head_1 <-

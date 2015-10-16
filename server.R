@@ -2,10 +2,15 @@
 
 
 shinyServer(function(input, output,session) {
-
-  autoInvalidate <- reactiveTimer(2000, session)
   
   
+#   timeData <- reactive({
+#   milliseconds <- input$time*6000
+# 
+#   autoInvalidate <- reactiveTimer(milliseconds, session)
+#   
+#   })
+#   
   
   source("code/guardian.R", local = TRUE)
   
