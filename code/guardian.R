@@ -6,6 +6,8 @@
 output$guardianTable <- DT::renderDataTable({
   
   
+  
+  
 guardian_front <-read_html("http://www.theguardian.com/international")
 
 milliseconds<-input$time*60000
@@ -91,7 +93,18 @@ b <- b %>%
 
 df <- bind_cols(a,b)
 
-df %>% 
+## compare with previous version
+olddf <- read_csv("guardianOld.csv")
+print(glimpse(olddf))
+
+top <- df %>% 
+  anti_join(olddf) 
+
+final <- rbind(top,df) %>% unique(.)
+
+write_csv(df,"guardianOld.csv")
+
+final %>% 
   mutate(title=paste0("<a href=\"",link,"\" target=\"_blank\">",headline,"</a>")) %>% 
   select(title) %>% 
   DT::datatable(class='compact stripe hover row-border order-column',
