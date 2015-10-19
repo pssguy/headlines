@@ -7,9 +7,11 @@ dashboardPage(title = "Headlines",
   dashboardHeader(title = "Headlines"),
   
   dashboardSidebar(
-  
+    includeCSS("custom.css"),
+    inputPanel(
     sliderInput("time",label="Minutes to Repeat",min=1,max=60, value=1),
-    
+    radioButtons("new",NULL,c("New","All"),inline=TRUE)
+    ),
     
     
     
@@ -49,7 +51,13 @@ dashboardPage(title = "Headlines",
                   status = "success", solidHeader = TRUE,
                   title = "Guardian",
                   DT::dataTableOutput("guardianTable")
-                )
+                ),
+            box(
+              width = 4, collapsible = TRUE,collapsed=TRUE,
+              status = "success", solidHeader = TRUE,
+              title = "Google News",
+              DT::dataTableOutput("googleNewsTable")
+            )
     )
     
     

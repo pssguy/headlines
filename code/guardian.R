@@ -95,14 +95,28 @@ df <- bind_cols(a,b)
 
 ## compare with previous version
 olddf <- read_csv("guardianOld.csv")
-print(glimpse(olddf))
+print("old")
+print(olddf)
+print("new")
+print(df)
 
 top <- df %>% 
-  anti_join(olddf) 
+  anti_join(olddf,by=c("link"))
 
+print(glimpse(top))
+
+
+if(input$new=="All") {
 final <- rbind(top,df) %>% unique(.)
+} else {
+  final <- top
+}
 
 write_csv(df,"guardianOld.csv")
+
+write_csv(df,"Latest.csv")
+write_csv(olddf,"Prior.csv")
+write_csv(top,"Diff.csv")
 
 final %>% 
   mutate(title=paste0("<a href=\"",link,"\" target=\"_blank\">",headline,"</a>")) %>% 
