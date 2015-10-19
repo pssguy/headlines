@@ -15,6 +15,7 @@ shinyServer(function(input, output,session) {
   source("code/guardian.R", local = TRUE)
   source("code/mailSport.R", local = TRUE)
   source("code/googleNews.R", local = TRUE)
+  source("code/sportingNews.R", local = TRUE)
   
   
  

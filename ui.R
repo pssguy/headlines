@@ -1,7 +1,5 @@
 
 
-
-
 dashboardPage(title = "Headlines",
   skin = "blue",
   dashboardHeader(title = "Headlines"),
@@ -19,7 +17,7 @@ dashboardPage(title = "Headlines",
       id = "sbMenu",
       
       menuItem(
-        "Guardian",tabName= "guardian"
+        "News Updates",tabName= "updates"
      
       ),
       
@@ -44,7 +42,7 @@ dashboardPage(title = "Headlines",
     
   )),
   dashboardBody(tabItems(
-    tabItem("guardian",
+    tabItem("updates",
            
                 box(
                   width = 4, collapsible = TRUE,collapsed=TRUE,
@@ -57,6 +55,12 @@ dashboardPage(title = "Headlines",
               status = "success", solidHeader = TRUE,
               title = "Google News",
               DT::dataTableOutput("googleNewsTable")
+            ),
+            box(
+              width = 4, collapsible = TRUE,collapsed=TRUE,
+              status = "success", solidHeader = TRUE,
+              title = "Sporting News",
+              DT::dataTableOutput("sportingNewsTable")
             )
     )
     
